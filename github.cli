@@ -1,0 +1,105 @@
+======================================================================
+                     GUÍA DE GITHUB CLI (gh)
+======================================================================
+
+gh es la herramienta oficial de línea de comandos de GitHub que te
+permite gestionar repositorios, pull requests, issues y más directamente
+desde tu terminal.
+
+----------------------------------------------------------------------
+1. INSTALACIÓN
+----------------------------------------------------------------------
+
+En Linux:
+  * Ubuntu / Debian:
+    sudo apt update && sudo apt install gh
+
+  * Fedora / RHEL / CentOS:
+    sudo dnf install gh
+
+  * Arch Linux:
+    sudo pacman -S github-cli
+
+En Windows:
+  Abri la terminal (PowerShell o CMD) y ejecuta:
+    winget install --id GitHub.cli
+
+----------------------------------------------------------------------
+2. INICIAR SESIÓN (AUTENTICACIÓN)
+----------------------------------------------------------------------
+
+Configura tus credenciales para conectarte a GitHub:
+  gh auth login
+
+  * Seguí las instrucciones: elige GitHub.com, selecciona HTTPS o SSH,
+    y completa la autenticación web o mediante token.
+
+Verificar el estado de tu sesión activa:
+  gh auth status
+
+
+----------------------------------------------------------------------
+3. TRABAJAR CON REPOSITORIOS
+----------------------------------------------------------------------
+
+Clonar un repositorio de GitHub:
+  gh repo clone organizacion/proyecto
+
+Crear un nuevo repositorio público en GitHub:
+  gh repo create mi-proyecto --public
+
+
+----------------------------------------------------------------------
+4. PULL REQUESTS (PR)
+----------------------------------------------------------------------
+
+Crear una propuesta para integrar los cambios de tu rama a main:
+  gh pr create --title "Título corto" --body "Detalles de los cambios"
+
+  * Consejo: Puedes ejecutar solo "gh pr create" para rellenar
+    los campos de manera interactiva paso a paso en la terminal.
+
+Listar los PRs activos del repositorio:
+  gh pr list
+
+Traer la rama de un PR de un compañero para probarla localmente:
+  gh pr checkout <numero_de_PR>
+
+Fusionar el PR actual en la rama principal:
+  gh pr merge
+
+
+----------------------------------------------------------------------
+5. ISSUES (TAREAS)
+----------------------------------------------------------------------
+
+Crear una nueva tarea o reporte de bug:
+  gh issue create --title "Título de la tarea" --body "Descripción"
+
+Ver las tareas que tienes asignadas:
+  gh issue list --assignee "@me"
+
+
+----------------------------------------------------------------------
+6. FLUJO HABITUAL DE TRABAJO
+----------------------------------------------------------------------
+
+  Crear rama local y hacer commits
+  ↓
+  Subir cambios a GitHub: git push
+  ↓
+  Crear el Pull Request: gh pr create
+  ↓
+  Fusionar el código tras aprobarlo: gh pr merge
+
+
+----------------------------------------------------------------------
+7. COMPUTADORAS COMPARTIDAS
+----------------------------------------------------------------------
+
+Si estás utilizando un equipo público o del aula, asegúrate de borrar
+tu sesión al finalizar la jornada:
+
+  gh auth logout
+
+======================================================================
